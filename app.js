@@ -10,7 +10,73 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+let teamList = []
+let userId = 1
 
+async function main() {
+    console.log("Welcome to the only place you can build a software engineering team in less then 5 minutes. Have fun!")
+    const managerInfo = await inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is the manager's name?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is the manager's email?"
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is the manager's office number?"
+        },
+        {
+            type: "input",
+            name: "teamMembers",
+            message: "How many other team members do you want?"
+        },
+    ])
+    const manager = new Manager ( managerInfo.name, userId++, managerInfo.email, managerInfo.office )
+    teamList.push(manager)
+    console.log(teamList)
+
+    for(let i=0; i<teamMembers.length; i++) {
+        let employeeType = await inquirer.prompt([
+            {
+                type: "list",
+                name: "type",
+                message: "What type of employee do you want?",
+                choices: ["Engineer", "Intern"]
+            }
+        ])
+        employeeType = employeeType.type
+
+        const employeeInfo = await inquirer.prompt([
+            {
+                type: "input",
+                name: "name",
+                message: `What is the name of your ${employeeType}?`
+            },
+            {
+                type: "input",
+                name: "email",
+                message: `What is ${employeeInfo.name}'s email?`
+            },
+            {
+                type: "input",
+                name: "info",
+                message: `What is ${employeeInfo.name}'s ${employeeType=="Engineer" ? "Github" : "School"}`
+            }
+        ])
+        const employee = employeeType=="Engineer"
+            ? new Engineer ( employeeInfo.name, userId++, employeeInfo.email, employeeInfo.info )
+            : new Intern ( employeeInfo.name, userId++, employeeInfo.email, employeeInfo.info )
+        teamList.push(employee)
+    }
+
+}
+main()
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
