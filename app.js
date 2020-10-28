@@ -18,7 +18,7 @@ let employeeId = 1
 
 // All logic wrapped in a async function
 async function main() {
-    console.log("Welcome to the only place you can build a software engineering team in less then 5 minutes. Have fun!")
+    console.log("Welcome to the only place you can build a software engineering team in 2 minutes!")
     
     // Questions for user
     const managerInfo = await inquirer.prompt([
@@ -76,7 +76,7 @@ async function main() {
             {
                 type: "input",
                 name: "info",
-                message: `What is the ${employeeType}'s ${employeeType=="Engineer" ? "Github" : "School"}`
+                message: `${employeeType=="Engineer" ? "What is the Engineer's github account?" : "Where did the intern go to school?"}`
             }
         ])
 
