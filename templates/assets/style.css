@@ -9,7 +9,7 @@ body {
 
 .card-group {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
     justify-content: center;
 }
@@ -32,7 +32,13 @@ body {
     font-weight: bold;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 1000px) {
+    .card-group {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+} 
+
+@media only screen and (max-width: 760px) {
     .card-group {
         grid-template-columns: 1fr 1fr;
     }
